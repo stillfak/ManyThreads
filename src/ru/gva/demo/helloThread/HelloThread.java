@@ -12,6 +12,26 @@ package ru.gva.demo.helloThread;
 public class HelloThread extends Thread {
 
     public void run() {
+        try {
 
+            while (true) {
+                System.out.println("hello from a thread");
+                Thread.sleep(1000);
+            }
+        }catch (InterruptedException e){
+
+        }
+    }
+
+    public static void main(String[] args) {
+        (new HelloThread()).start();
+        try {
+            while (true) {
+                System.out.println("hello from main thread");
+                Thread.sleep(1000);
+            }
+        }catch (InterruptedException e){
+
+        }
     }
 }

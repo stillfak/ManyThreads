@@ -10,9 +10,13 @@ public class RandomRunExample extends Thread{
     }
 
     public static void example() {
+
         for (int i = 0; i <10 ; i++) {
+
             Thread thread = new RandomRunExample();
+
             thread.start();
+
         }
 
     }

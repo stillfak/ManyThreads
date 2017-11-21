@@ -27,10 +27,9 @@ public class Synch extends Thread {
 
     public static void main(String[] args) {
         Synch synch = new Synch();
+        Synch synch1 = new Synch();
+
         synch.start();
-        for (int j = 0; j < 1_000; j++) {
-            add();
-            System.out.println(i);
-        }
+        synch1.start();
     }
 }

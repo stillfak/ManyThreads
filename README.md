@@ -1,8 +1,7 @@
 # ManyThreads
 Репозиторий содержит практические задание по потокам в java 
-## eggOrChicken
+## <a href="https://github.com/stillfak/ManyThreads/tree/master/src/ru/gva/demo/eggOrChicken">eggOrChicken</a>
 Содержит реализацию практического задания "Курица или Яйцо"<br>
-<a href="https://github.com/stillfak/ManyThreads/tree/master/src/ru/gva/demo/eggOrChicken">Курица или Яйцо</a>
 ## HelloThread
 Содержит пример реализации многопоточности через наследие родительского класса Thread<br>
 <a href="https://github.com/stillfak/ManyThreads/tree/master/src/ru/gva/demo/helloThread">Hello Thread</a>

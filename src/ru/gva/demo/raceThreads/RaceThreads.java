@@ -7,8 +7,8 @@ package ru.gva.demo.raceThreads;
  */
 public class RaceThreads extends Thread {
 
-    public static final int MAX_COUNT_OF_STEPS = 200;
-    public static final int SLEEP_THREAD = 5; // кол-во на который поток приостанавливается(5 = 0.005 секунд)
+    private static final int MAX_COUNT_OF_STEPS = 200_000;
+    private static final int SLEEP_THREAD = 5; // кол-во на который поток приостанавливается(5 = 0.005 секунд)
 
     private int i;
 
@@ -17,7 +17,7 @@ public class RaceThreads extends Thread {
 
         for (i = 1; i <= MAX_COUNT_OF_STEPS; i++) {
 
-            System.out.println("raceThread - " + i);
+            System.out.println(getName() + " - " + i);
 
             try {
 
@@ -33,36 +33,26 @@ public class RaceThreads extends Thread {
 
     public static void main(String[] args) {
         RaceThreads raceThreads = new RaceThreads();
-        Thread thread = Thread.currentThread();
+        RaceThreads raceThreads1 = new RaceThreads();
 
         raceThreads.setPriority(MAX_PRIORITY);
-        thread.setPriority(MIN_PRIORITY);
+        raceThreads1.setPriority(MIN_PRIORITY);
 
         raceThreads.start();
+        raceThreads1.start();
 
-        for (int i = 1; i <= MAX_COUNT_OF_STEPS; i++) {
+        while (raceThreads.isAlive() || raceThreads1.isAlive()) {
 
-            System.out.println("Thread - " +  i);
+            if (raceThreads.i % 1000 == 0) {
 
-            try {
-
-                thread.sleep(SLEEP_THREAD);
-
-            } catch (InterruptedException e) {
-
-                e.printStackTrace();
-
-            }
-
-            if (raceThreads.i % 5  == 0){
-
-                thread.setPriority(MAX_PRIORITY);
+                raceThreads1.setPriority(MAX_PRIORITY);
                 raceThreads.setPriority(MIN_PRIORITY);
 
             }
-            if (i % 4 ==0){
 
-                thread.setPriority(MIN_PRIORITY);
+            if (raceThreads1.i % 2000 == 0) {
+
+                raceThreads1.setPriority(MIN_PRIORITY);
                 raceThreads.setPriority(MAX_PRIORITY);
 
             }

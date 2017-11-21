@@ -1,3 +1,6 @@
 .idea
 out
 *.iml
+Будет удалено src/ru/gva/demo/readAndWriteThroughStreams/combo.txt
+Будет удалено src/ru/gva/demo/readAndWriteThroughStreams/index.html
+Будет удалено src/ru/gva/demo/readAndWriteThroughStreams/modals.html

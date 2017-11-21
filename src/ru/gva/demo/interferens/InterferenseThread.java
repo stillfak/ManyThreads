@@ -6,8 +6,10 @@ public class InterferenseThread extends Thread {
     private volatile static int i;
 
     public InterferenseThread(String name ,InterferenceExample checker) {
+
         super(name);
         this.checker = checker;
+
     }
 
     @Override

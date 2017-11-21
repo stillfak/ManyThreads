@@ -1,6 +1,11 @@
 package ru.gva.demo.runexample;
 
-
+/**
+ * Данный класс содержит объект поток.
+ * В нем реализованно запуск 10 потоков
+ *
+ * @author Gavrikov V 15it18
+ */
 
 public class RandomRunExample extends Thread{
 

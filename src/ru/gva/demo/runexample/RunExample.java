@@ -1,5 +1,10 @@
 package ru.gva.demo.runexample;
 
+/**
+ * Тестовый класс
+ *
+ * @author Gavrikov V. 15it18
+ */
 
 public class RunExample {
 

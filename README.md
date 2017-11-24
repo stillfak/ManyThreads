@@ -18,3 +18,5 @@
 Содержит программу которая показывает как OS запускает потоки<br>
 ## <a href="https://github.com/stillfak/ManyThreads/tree/master/src/ru/gva/demo/readAndWriteThroughStreams">readAndWriteThroughStreams</a>
 Содержит реализацию задачи "Многопоточное считывание данных из файлов"
+## <a href="https://github.com/stillfak/ManyThreads/tree/master/src/ru/gva/demo/copyFiles">copyFiles</a>
+Содержит реализацию задачи Копирование файлов. 

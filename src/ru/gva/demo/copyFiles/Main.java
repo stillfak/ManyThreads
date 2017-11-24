@@ -45,7 +45,7 @@ public class Main {
     /**
      * Метод запускает 2 потока.
      *
-     * @param copyFiles 1 поток
+     * @param copyFiles  1 поток
      * @param copyFiles1 2 поток
      */
     private static void start(CopyFiles copyFiles, CopyFiles copyFiles1) {
@@ -59,14 +59,14 @@ public class Main {
      *
      * @param copyFiles поток
      */
-     private static void start(CopyFiles copyFiles) {
+    private static void start(CopyFiles copyFiles) {
         copyFiles.start();
     }
 
     /**
      * Метод вызывает метод join() для потоков, который ждет пока выполниться поток.
      *
-     * @param copyFiles 1 поток
+     * @param copyFiles  1 поток
      * @param copyFiles1 2 поток
      * @throws InterruptedException исключение.
      */

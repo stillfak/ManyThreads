@@ -8,7 +8,7 @@ import java.io.*;
  * @author Gavrikov V. 15it18.
  */
 
-public class CopyFiles extends Thread{
+public class CopyFiles extends Thread {
 
     private String addresSource;
     private String addresRecipient;
@@ -26,21 +26,22 @@ public class CopyFiles extends Thread{
     @Override
     public void run() {
         long time = System.currentTimeMillis();
+
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(addresSource));
              BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(addresRecipient))) {
 
             String copyLine;
 
-            while ((copyLine = bufferedReader.readLine()) !=null){
+            while ((copyLine = bufferedReader.readLine()) != null) {
 
                 bufferedWriter.write(copyLine);
 
             }
-            timeRun = System.currentTimeMillis()-time;
+
+            timeRun = System.currentTimeMillis() - time;
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

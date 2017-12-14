@@ -37,9 +37,10 @@ public class MusicUpgrade extends Thread {
         }
     }
 
-    public static void main(String[] args) throws MalformedURLException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         String[] url = new String[2];
-        String[] pattern = {"\\s*(?<=data-url\\s?=\\s?\")[^>]*\\/*(?=\")" ,"\\s*(?<=audio src=\")[^>]*\\.mp3"};
+        String[] pattern = {"\\s*(?<=data-url\\s?=\\s?\")[^>]*\\/*(?=\")","\\s*(?<=audio src=\")[^>]*\\.mp3"};
+
         try (BufferedReader inFile = new BufferedReader(new FileReader(IN_FILE_TXT))) {
 
             for (int i = 0; i <url.length ; i++) {

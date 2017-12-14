@@ -7,6 +7,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
+/**
+ *
+ */
 public class PatternOut extends Thread {
     private Pattern pattern;
     private BufferedReader bufferedReader;
@@ -29,7 +32,11 @@ public class PatternOut extends Thread {
 
             while (matcher.find()) {
 
-                write(matcher.group());
+                try {
+                    write(matcher.group());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
             }
 
@@ -39,61 +46,37 @@ public class PatternOut extends Thread {
 
     }
 
-    private static synchronized void write(String string) {
-        try {
-
-            outFile.write(string + "\r\n");
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private static synchronized void write(String string) throws IOException {
+        outFile.write(string + "\r\n");
     }
 
-    public static void parrseout(String[] url, String[] patterns){
+    public static void parrseout(String[] url, String[] patterns) throws IOException, InterruptedException {
 
-        try {
-            outFile = new BufferedWriter(new FileWriter("src/ru/gva/demo/music/downloadmusic/outFile.txt"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
+        outFile = new BufferedWriter(new FileWriter("src/ru/gva/demo/music/downloadmusic/outFile.txt"));
+
 
         PatternOut[] patternOuts = new PatternOut[url.length];
 
-        for (int i = 0; i < url.length ; i++) {
+        for (int i = 0; i < patternOuts.length; i++) {
 
-            try {
-
-                patternOuts[i] = new PatternOut(Pattern.compile(patterns[i]),new BufferedReader(new InputStreamReader(new URL(url[i]).openStream())));
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            patternOuts[i] = new PatternOut(Pattern.compile(patterns[i]), new BufferedReader(new InputStreamReader(new URL(url[i]).openStream())));
 
             patternOuts[i].start();
         }
 
         aliveAndJoin(patternOuts);
 
-        try {
-            outFile.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        outFile.close();
 
     }
 
-    private static void aliveAndJoin(PatternOut[] patternOuts) {
+    private static void aliveAndJoin(PatternOut[] patternOuts) throws InterruptedException {
 
         for (PatternOut patternOut : patternOuts) {
-
             if (patternOut.isAlive()) {
-                try {
-                    patternOut.join();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                patternOut.join();
             }
-
         }
     }
 }

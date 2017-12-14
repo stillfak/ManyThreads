@@ -22,3 +22,5 @@
 Содержит реализацию задачи Копирование файлов. 
 ## <a href="https://github.com/stillfak/ManyThreads/tree/master/src/ru/gva/demo/seriesRunExample">seriesRunExample</a>
 Содержит пример Установки порядка выполнения потоков.
+## <a href="https://github.com/stillfak/ManyThreads/tree/master/src/ru/gva/demo/music">music</a>
+Содержит задачу скачивание музыки

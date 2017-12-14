@@ -14,12 +14,12 @@ public class Main {
 
     public static void main(String[] args) {
         String Url;
+        String result;
         try (BufferedReader inFile = new BufferedReader(new FileReader(IN_FILE_TXT));
              BufferedWriter outFile = new BufferedWriter(new FileWriter(OUT_FILE_TXT))) {
             while ((Url = inFile.readLine()) != null) {
                 URL url = new URL(Url);
 
-                String result;
                 try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openStream()))) {
                     result = bufferedReader.lines().collect(Collectors.joining("\n"));
                 }
@@ -34,20 +34,20 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        try (BufferedReader musicFile = new BufferedReader(new FileReader(OUT_FILE_TXT))) {
-            String music;
-            int count = 0;
-            try {
-                while ((music = musicFile.readLine()) != null) {
-                    downloadUsingNIO(music, PATH_TO_MUSIC + String.valueOf(count) + ".mp3");
-                    count++;
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try (BufferedReader musicFile = new BufferedReader(new FileReader(OUT_FILE_TXT))) {
+//            String music;
+//            int count = 0;
+//            try {
+//                while ((music = musicFile.readLine()) != null) {
+//                    downloadUsingNIO(music, PATH_TO_MUSIC + String.valueOf(count) + ".mp3");
+//                    count++;
+//                }
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
     }
 

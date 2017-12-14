@@ -5,16 +5,19 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.channels.*;
 
+/**
+ * Данный класс содержит методы которые позволяют скачать музыку с удаленного сервера.
+ */
 public class MusicUpgrade extends Thread {
     private int i;
 
-    public MusicUpgrade(int i) {
+    private MusicUpgrade(int i) {
         this.i = i;
     }
 
     private static final String IN_FILE_TXT = "src/ru/gva/demo/music/InFile.txt";
     private static final String OUT_FILE_TXT = "src/ru/gva/demo/music/downloadmusic/outFile.txt";
-    private static final String PATH_TO_MUSIC = "src/ru/gva/demo/music/downloadmusic/music";
+    private static final String PATH_TO_MUSIC = "src/ru/gva/demo/music/downloadmusic/music/music";
 
 
     @Override
@@ -24,9 +27,9 @@ public class MusicUpgrade extends Thread {
             int count = 0;
             try {
                 while ((music = musicFile.readLine()) != null) {
-                    if (count%2 ==i) {
+                    //if (count%2 ==i) {
                         downloadUsingNIO(music, PATH_TO_MUSIC + String.valueOf(count) + ".mp3");
-                    }
+                    //}
                     count++;
                 }
             } catch (IOException e) {
@@ -50,21 +53,24 @@ public class MusicUpgrade extends Thread {
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
         PatternOut.parrseout(url,pattern);
 
 
         MusicUpgrade music1 = new MusicUpgrade(0);
-        MusicUpgrade music2 = new MusicUpgrade(1);
+       // MusicUpgrade music2 = new MusicUpgrade(1);
 
-       // music1.start();
+        music1.start();
        // music2.start();
     }
 
-
+    /**
+     * Данный метод скачает файл с удаленного сервера.
+     * @param strUrl адрес файла yf на сервере
+     * @param file адрес и имя файла на пк
+     * @throws IOException InputOutput
+     */
 
     private static void downloadUsingNIO(String strUrl, String file) throws IOException {
         URL url = new URL(strUrl);
@@ -73,5 +79,9 @@ public class MusicUpgrade extends Thread {
         stream.getChannel().transferFrom(byteChannel, 0, Long.MAX_VALUE);
         stream.close();
         byteChannel.close();
+    }
+
+    public int getI() {
+        return i;
     }
 }

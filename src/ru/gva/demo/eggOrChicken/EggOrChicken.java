@@ -21,6 +21,7 @@ public class EggOrChicken extends Thread{
 
     public static void main(String[] args) {
         EggOrChicken eggOrChicken = new EggOrChicken();//Создание потока
+        EggOrChicken eggOrChicken1 =new EggOrChicken();
         Thread thread = Thread.currentThread();
         thread.setPriority(10);
 

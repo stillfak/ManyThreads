@@ -10,7 +10,7 @@ public class DownloadUsingNIO extends Thread {
     private String strUrl;
     private String file;
 
-    DownloadUsingNIO(String strUrl, String file) {
+    public DownloadUsingNIO(String strUrl, String file) {
         this.strUrl = strUrl;
         this.file = file;
     }

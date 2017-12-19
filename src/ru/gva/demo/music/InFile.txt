@@ -1,2 +1,2 @@
-https://zvonko.me/
-https://mp3up.me/
+https://zvonko.me/ \\s*(?<=data-url\\s?=\\s?\")[^>]*\\/*(?=\")
+https://mp3up.me/ \\s*(?<=audio\\s?src=\")[^>]*\\.mp3

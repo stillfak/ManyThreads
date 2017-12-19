@@ -3,22 +3,23 @@ package ru.gva.demo.music;
 
 import java.io.*;
 import java.net.URL;
+import java.util.Map;
 import java.util.regex.*;
 import java.util.stream.Collectors;
 
 /**
- *Данный класс содержит методы которые позволяют искать в html документе
- *ссылки на скачивание музыки, и сохранять их в файл
+ * Данный класс содержит методы которые позволяют искать в html документе
+ * ссылки на скачивание музыки, и сохранять их в файл
  *
  * @author Gavrikov V. 15it18.
  */
-public class PatternOut extends Thread {
+public class ParrserHtmlSafeResultInFileTXT extends Thread {
     private Pattern pattern;
     private BufferedReader bufferedReader;
 
     private static volatile BufferedWriter outFile;
 
-    private PatternOut(Pattern pattern, BufferedReader bufferedReader) {
+    private ParrserHtmlSafeResultInFileTXT(Pattern pattern, BufferedReader bufferedReader) {
         this.pattern = pattern;
         this.bufferedReader = bufferedReader;
     }
@@ -63,30 +64,42 @@ public class PatternOut extends Thread {
      * Тестовый метод, который создает n кол-во потоков,
      * запускает и ждет пока они выполняются.
      *
-     * @param url - массив с url адресами сайтов
-     * @param patterns - массив с шаблонами для регулярного вырожения.
-     * @throws IOException InputOutput
+     *
+     * @throws IOException          InputOutput
      * @throws InterruptedException checked exception
      */
-    static void parrseout(String[] url, String[] patterns) throws IOException, InterruptedException {
-
+    static void parrseout(Map<String, String> pathAndURL) throws IOException, InterruptedException {
 
         outFile = new BufferedWriter(new FileWriter("src/ru/gva/demo/music/downloadmusic/outFile.txt"));
 
-
-        PatternOut[] patternOuts = new PatternOut[url.length];
-
-        for (int i = 0; i < patternOuts.length; i++) {
-
-            patternOuts[i] = new PatternOut(Pattern.compile(patterns[i]), new BufferedReader(new InputStreamReader(new URL(url[i]).openStream())));
-
-            patternOuts[i].start();
-        }
+        ParrserHtmlSafeResultInFileTXT[] patternOuts = createdAndStart(/**pathAndURL.keySet().toArray(new String[0]),*/ pathAndURL);
 
         aliveAndJoin(patternOuts);
 
         outFile.close();
 
+    }
+
+    /**
+     *
+     * @return
+     */
+
+    private static ParrserHtmlSafeResultInFileTXT[] createdAndStart(Map<String, String> pathAndURL) {
+        String[] key = pathAndURL.keySet().toArray(new String[0]);
+        ParrserHtmlSafeResultInFileTXT[] patternOuts = new ParrserHtmlSafeResultInFileTXT[key.length];
+
+        for (int i = 0; i < key.length; i++) {
+
+            try {
+                patternOuts[i] = new ParrserHtmlSafeResultInFileTXT(Pattern.compile(pathAndURL.get(key[i])), new BufferedReader(new InputStreamReader(new URL(key[i]).openStream())));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            patternOuts[i].start();
+        }
+        return patternOuts;
     }
 
     /**
@@ -96,9 +109,9 @@ public class PatternOut extends Thread {
      * @param patternOuts массив с потоками.
      * @throws InterruptedException checked exception
      */
-    private static void aliveAndJoin(PatternOut[] patternOuts) throws InterruptedException {
+    private static void aliveAndJoin(ParrserHtmlSafeResultInFileTXT[] patternOuts) throws InterruptedException {
 
-        for (PatternOut patternOut : patternOuts) {
+        for (ParrserHtmlSafeResultInFileTXT patternOut : patternOuts) {
             if (patternOut.isAlive()) {
                 patternOut.join();
             }

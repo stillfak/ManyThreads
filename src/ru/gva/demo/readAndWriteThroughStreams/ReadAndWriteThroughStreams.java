@@ -23,6 +23,7 @@ public class ReadAndWriteThroughStreams extends Thread {
 
     @Override
     public void run() {
+
         long time = System.currentTimeMillis();
 
         String string;

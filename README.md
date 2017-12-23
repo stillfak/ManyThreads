@@ -24,3 +24,6 @@
 Содержит пример Установки порядка выполнения потоков.
 ## <a href="https://github.com/stillfak/ManyThreads/tree/master/src/ru/gva/demo/music">music</a>
 Содержит задачу скачивание музыки
+## <a href="https://github.com/stillfak/ManyThreads/tree/master/src/ru/gva/demo/downloadJPG">downloadJPG</a>
+Содержит задачу скачивание картинки
+

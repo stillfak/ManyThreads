@@ -1,7 +1,12 @@
 package ru.gva.demo.downloadJPG;
 
-import ru.gva.demo.music.DownloadUsingNIO;
+import ru.gva.demo.download.DownloadUsingNIO;
 
+/**
+ * Данный класс содержит реализацию задачи "скачивание фотографий".
+ *
+ * @author Gavrikov V. 15it18.
+ */
 public class Main {
     private static final String PATH_TO_JPEG ="src/ru/gva/demo/downloadJPG/";
 

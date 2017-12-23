@@ -11,7 +11,7 @@ import java.io.*;
 
 public class ReadAndWriteThroughStreams extends Thread {
 
-    private static final long TIME = System.currentTimeMillis();
+
 
     private volatile static BufferedWriter bufferedWriter;//для записи в файл
 
@@ -23,6 +23,7 @@ public class ReadAndWriteThroughStreams extends Thread {
 
     @Override
     public void run() {
+        long time = System.currentTimeMillis();
 
         String string;
 
@@ -39,7 +40,7 @@ public class ReadAndWriteThroughStreams extends Thread {
 
         }
 
-        System.out.println((System.currentTimeMillis()-TIME));
+        System.out.println((System.currentTimeMillis()-time));
     }
 
 

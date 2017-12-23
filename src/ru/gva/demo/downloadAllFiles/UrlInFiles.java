@@ -15,13 +15,13 @@ import java.util.List;
 
 public class UrlInFiles extends Thread {
     private String pathToFilesURL;
-    private String extesio;
+    private String expansion;
 
     private static final String PATH_AND_NAME = "/home/vadim/Документы/ManyThreads/src/ru/gva/demo/downloadAllFiles/download/";
 
 
-    public UrlInFiles(String pathToFilesURL, String extesio) {
-        this.extesio = extesio;
+    public UrlInFiles(String pathToFilesURL, String expansion) {
+        this.expansion = expansion;
         this.pathToFilesURL = pathToFilesURL;
     }
 
@@ -32,7 +32,7 @@ public class UrlInFiles extends Thread {
             DownloadUsingNIO download;
 
             for (int i = 0; i < urls.size(); i++) {
-                download = new DownloadUsingNIO(urls.get(i), PATH_AND_NAME + String.valueOf(i) + "." + extesio);
+                download = new DownloadUsingNIO(urls.get(i), PATH_AND_NAME + String.valueOf(i) + "." + expansion);
                 download.start();
                 download.join();
 

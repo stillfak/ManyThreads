@@ -28,22 +28,19 @@ public class ParrserHtmlSafeResultInFileTXT extends Thread {
     public void run() {
         String result;
 
-        while ((result = bufferedReader.lines().collect(Collectors.joining("\n"))) != null) {
+        result = bufferedReader.lines().collect(Collectors.joining("\n"));
 
-            Pattern email_pattern = pattern;
-            Matcher matcher = email_pattern.matcher(result);
+        Pattern email_pattern = pattern;
+        Matcher matcher = email_pattern.matcher(result);
 
-            while (matcher.find()) {
+        while (matcher.find()) {
 
-                try {
-                    write(matcher.group());
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
+            try {
+                write(matcher.group());
+            } catch (IOException e) {
+                e.printStackTrace();
             }
 
-            break;
 
         }
 
@@ -64,7 +61,6 @@ public class ParrserHtmlSafeResultInFileTXT extends Thread {
      * Тестовый метод, который создает n кол-во потоков,
      * запускает и ждет пока они выполняются.
      *
-     *
      * @throws IOException          InputOutput
      * @throws InterruptedException checked exception
      */
@@ -72,7 +68,7 @@ public class ParrserHtmlSafeResultInFileTXT extends Thread {
 
         outFile = new BufferedWriter(new FileWriter("src/ru/gva/demo/music/downloadmusic/outFile.txt"));
 
-        ParrserHtmlSafeResultInFileTXT[] patternOuts = createdAndStart(/**pathAndURL.keySet().toArray(new String[0]),*/ pathAndURL);
+        ParrserHtmlSafeResultInFileTXT[] patternOuts = createdAndStart(pathAndURL);
 
         aliveAndJoin(patternOuts);
 
@@ -81,12 +77,12 @@ public class ParrserHtmlSafeResultInFileTXT extends Thread {
     }
 
     /**
-     *
      * @return
      */
 
     private static ParrserHtmlSafeResultInFileTXT[] createdAndStart(Map<String, String> pathAndURL) {
         String[] key = pathAndURL.keySet().toArray(new String[0]);
+
         ParrserHtmlSafeResultInFileTXT[] patternOuts = new ParrserHtmlSafeResultInFileTXT[key.length];
 
         for (int i = 0; i < key.length; i++) {

@@ -77,7 +77,9 @@ public class ParrserHtmlSafeResultInFileTXT extends Thread {
     }
 
     /**
-     * @return
+     * Метод создает объекты(наследники Thread)  и запускает их.
+     *
+     * @return массив содержащий рапущенный обьекты.
      */
 
     private static ParrserHtmlSafeResultInFileTXT[] createdAndStart(Map<String, String> pathAndURL) {

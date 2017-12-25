@@ -17,7 +17,7 @@ public class Main {
         String pathOrUrl = Input.inputInConsole("Введите адрес до скачиваемого Файла или путь до файла(.txt) с ссылками");
 
         Pattern pattern = Pattern.compile(".*\\.txt");
-        Pattern urlPattern = Pattern.compile("^http[s]?:.*$");
+        Pattern urlPattern = Pattern.compile("^http[s]?:\\/\\/.*$");
         Matcher matcher = pattern.matcher(pathOrUrl);
         Matcher matcher1 = urlPattern.matcher(pathOrUrl);
 

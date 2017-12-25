@@ -26,4 +26,9 @@
 Содержит задачу скачивание музыки
 ## <a href="https://github.com/stillfak/ManyThreads/tree/master/src/ru/gva/demo/downloadJPG">downloadJPG</a>
 Содержит задачу скачивание картинки
-
+## <a href="https://github.com/stillfak/ManyThreads/tree/master/src/ru/gva/demo/download">download</a>
+Содержит класс для скачивание файлов
+## <a href="https://github.com/stillfak/ManyThreads/tree/master/src/ru/gva/demo/downloadAllFiles">downloadAllFiles</a>
+Содержит задачу скачивание любого файла
+## <a href="https://github.com/stillfak/ManyThreads/tree/master/src/ru/gva/demo/input">input</a>
+Содержит класс ввода данных

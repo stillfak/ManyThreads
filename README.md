@@ -32,3 +32,5 @@
 Содержит задачу скачивание любого файла
 ## <a href="https://github.com/stillfak/ManyThreads/tree/master/src/ru/gva/demo/input">input</a>
 Содержит класс ввода данных
+## <a href="https://github.com/stillfak/ManyThreads/tree/master/src/ru/gva/demo/download">download</a>
+Содержит класс скачивания файлов с удаленного сервера

@@ -17,7 +17,9 @@ public class Main {
         String pathOrUrl = Input.inputInConsole("Введите адрес до скачиваемого Файла или путь до файла(.txt) с ссылками");
 
         Pattern pattern = Pattern.compile(".*\\.txt");
+        Pattern urlPattern = Pattern.compile("^http[s]?:.*$");
         Matcher matcher = pattern.matcher(pathOrUrl);
+        Matcher matcher1 = urlPattern.matcher(pathOrUrl);
 
         if (matcher.find()) {
 
@@ -25,11 +27,11 @@ public class Main {
 
             new UrlInFiles(matcher.group(), extes).start();
 
-        } else {
+        } else if (matcher1.find()){
 
             String pathInOS = Input.inputInConsole("Введите путь, куда сохранаять файл, его имя и расширение ");
 
-            new UrlInConsole(pathOrUrl, pathInOS).download();
+            new UrlInConsole(matcher1.group(), pathInOS).download();
         }
 
 

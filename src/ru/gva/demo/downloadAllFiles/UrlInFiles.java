@@ -66,11 +66,11 @@ public class UrlInFiles extends Thread {
 
     }
 
-    protected void addline(String str) throws NullPointerException{
+    private void addline(String str) throws NullPointerException{
         urls.add(str);
     }
 
-    void addlines(String pathInOS) throws IOException {
+    private void addlines(String pathInOS) throws IOException {
         urls.addAll(Files.readAllLines(Paths.get(pathInOS)));
     }
 

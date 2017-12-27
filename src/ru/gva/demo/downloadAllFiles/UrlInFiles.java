@@ -11,7 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Данный класс добавляет url адрес-а в List и считывает url адреса из List и создает экземпляры объекта скачивания файлов.
+ * Данный класс добавляет url адрес-а в List и считывает urlOrPath адреса из List и создает экземпляры объекта скачивания файлов.
  *
  * @author Gavrikov V. 15it18.
  */
@@ -19,10 +19,10 @@ import java.util.regex.Pattern;
 public class UrlInFiles extends Thread {
     private List<String> urls;
     private String pathInOS;
-    private String url;
+    private String urlOrPath;
 
-    UrlInFiles(String pathInOS, String url) {
-        this.url = url;
+    UrlInFiles(String pathInOS, String urlOrPath) {
+        this.urlOrPath = urlOrPath;
         this.pathInOS = pathInOS;
         this.urls = new ArrayList<>();
 
@@ -33,7 +33,7 @@ public class UrlInFiles extends Thread {
         try {
             DownloadUsingNIO download;
             String[] path = pathInOS.split("\\.");
-            pattern(url);
+            typeStr(urlOrPath);
 
 
             for (int i = 0; i < urls.size(); i++) {
@@ -48,12 +48,12 @@ public class UrlInFiles extends Thread {
     }
 
     /**
-     * Данный метод определяет "чем является строка, путем до файла или url"
+     * Данный метод определяет "чем является строка, путем до файла или urlOrPath"
      *
      * @param pathOrUrl строка
      * @throws IOException InputOutput
      */
-    private void pattern(String pathOrUrl) throws IOException {
+    private void typeStr(String pathOrUrl) throws IOException {
         Pattern url = Pattern.compile("^http[s]?:.*$");
         Pattern pathINOS = Pattern.compile(".*\\.txt$");
 
@@ -71,7 +71,7 @@ public class UrlInFiles extends Thread {
     }
 
     /**
-     *Данынй метод добавляет в List url адрес
+     *Данынй метод добавляет в List urlOrPath адрес
      *
      * @param url адрес
      */
@@ -81,9 +81,9 @@ public class UrlInFiles extends Thread {
     }
 
     /**
-     * Данный метод добавляет в List url адреса
+     * Данный метод добавляет в List urlOrPath адреса
      *
-     * @param path путь до файла содрежащий url адреса
+     * @param path путь до файла содрежащий urlOrPath адреса
      * @throws IOException InputOutput
      */
     private void addlines(String path) throws IOException {

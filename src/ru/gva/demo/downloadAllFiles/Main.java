@@ -3,7 +3,7 @@ package ru.gva.demo.downloadAllFiles;
 
 
 /**
- * В классе реализованно простое консольное управление программой.
+ * Тестовый класс.
  *
  * @author Gavrikov V 15it18.
  */

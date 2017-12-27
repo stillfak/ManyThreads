@@ -14,10 +14,16 @@ import javafx.stage.Stage;
 
 
 /**
+ * Содержит класс реализующий графический интерфейс
  *
+ * @author Gavrikov V 15it18.
  */
 
 public class Activity extends Application {
+    private static final String CSS = "-fx-background-radius: 10; " +
+            "-fx-background-color: mistyrose;-fx-text-fill:gray;" +
+            "-fx-border-style:solid;-fx-border-radius: 10;" +
+            " -fx-border-color: wheat; -fx-border-width: 4;"; // css for TextField`s
 
 
     public void start(Stage primaryStage) throws Exception {
@@ -33,23 +39,16 @@ public class Activity extends Application {
 
         root.setStyle("-fx-background-color:mistyrose;");
         title.setStyle("-fx-text-fill:gray;");
-        url.setStyle("-fx-background-radius: 10; " +
-                "-fx-background-color: mistyrose;-fx-text-fill:gray;" +
-                "-fx-border-style:solid;-fx-border-radius: 10;" +
-                " -fx-border-color: wheat; -fx-border-width: 4;");
+        url.setStyle(CSS);
+        nameAndExpansion.setStyle(CSS);
         btn1.setStyle("-fx-border-radius: 20;-fx-background-radius: 20; " +
-                "-fx-text-fill: white; -fx-color: rosybrown;");
-        nameAndExpansion.setStyle("-fx-background-radius: 10; " +
-                "-fx-background-color: mistyrose;-fx-text-fill:gray;" +
-                "-fx-border-style:solid;-fx-border-radius: 10;" +
-                " -fx-border-color: wheat; -fx-border-width: 4;");
+                "-fx-text-fill: white; -fx-color: rosybrown;" +
+                "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);");
+
 
         GridPane.setConstraints(title,0,0);
         GridPane.setConstraints(url, 0, 0);
         GridPane.setConstraints(nameAndExpansion,0,0);
-
-//        GridPane.setMargin(title,new Insets(0,0,0,0));
-//        GridPane.setMargin(urlName,new Insets(50,50,0,50));
 
         title.setTranslateX(30);
         url.setTranslateX(30);
@@ -71,23 +70,20 @@ public class Activity extends Application {
         nameAndExpansion.setText("name and expansion");
 
         btn1.setOnAction(event -> {
-            Stage stage = new Stage();
-
             FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Select directory for save and expansion");
+            fileChooser.setTitle("Select directory for save");
             fileChooser.setInitialFileName(String.valueOf(nameAndExpansion.getCharacters()));
 
-            new UrlInFiles(fileChooser.showSaveDialog(stage).getPath(),String.valueOf(url.getCharacters())).start();
-
+            new UrlInFiles(fileChooser.showSaveDialog(new Stage()).getPath(),String.valueOf(url.getCharacters())).start();
 
         });
 
 
 
-        root.getChildren().addAll(url, btn1,title,nameAndExpansion);
+        root.getChildren().addAll(url, btn1,title,nameAndExpansion);// we connect blocks
 
         primaryStage.setScene(new Scene(root, 300, 200));
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(false); // block the window size change
 
         primaryStage.show();
 

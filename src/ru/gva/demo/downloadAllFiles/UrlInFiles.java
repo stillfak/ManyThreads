@@ -11,7 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Данный класс считывает url адреса из файла и созжает экземпляры объекта скачивания файлов.
+ * Данный класс добавляет url адрес-а в List и считывает url адреса из List и создает экземпляры объекта скачивания файлов.
  *
  * @author Gavrikov V. 15it18.
  */
@@ -21,7 +21,7 @@ public class UrlInFiles extends Thread {
     private String pathInOS;
     private String url;
 
-    public UrlInFiles(String pathInOS, String url) {
+    UrlInFiles(String pathInOS, String url) {
         this.url = url;
         this.pathInOS = pathInOS;
         this.urls = new ArrayList<>();
@@ -42,13 +42,17 @@ public class UrlInFiles extends Thread {
                 download.join();
 
             }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (InterruptedException | IOException e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Данный метод определяет "чем является строка, путем до файла или url"
+     *
+     * @param pathOrUrl строка
+     * @throws IOException InputOutput
+     */
     private void pattern(String pathOrUrl) throws IOException {
         Pattern url = Pattern.compile("^http[s]?:.*$");
         Pattern pathINOS = Pattern.compile(".*\\.txt$");
@@ -66,12 +70,24 @@ public class UrlInFiles extends Thread {
 
     }
 
-    private void addline(String str) throws NullPointerException{
-        urls.add(str);
+    /**
+     *Данынй метод добавляет в List url адрес
+     *
+     * @param url адрес
+     */
+
+    private void addline(String url) {
+        urls.add(url);
     }
 
-    private void addlines(String pathInOS) throws IOException {
-        urls.addAll(Files.readAllLines(Paths.get(pathInOS)));
+    /**
+     * Данный метод добавляет в List url адреса
+     *
+     * @param path путь до файла содрежащий url адреса
+     * @throws IOException InputOutput
+     */
+    private void addlines(String path) throws IOException {
+        urls.addAll(Files.readAllLines(Paths.get(path)));
     }
 
 

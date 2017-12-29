@@ -18,3 +18,6 @@ out
 /src/ru/gva/demo/readAndWriteThroughStreams/combo.txt
 /src/ru/gva/demo/readAndWriteThroughStreams/index.html
 /src/ru/gva/demo/readAndWriteThroughStreams/modals.html
+!/src/ru/gva/demo/downloadAllFiles/css/style.css
+/src/ru/gva/demo/downloadAllFiles/img/bg.jpg
+!/src/ru/gva/demo/downloadAllFiles/img/bg.jpg

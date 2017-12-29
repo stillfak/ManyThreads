@@ -61,13 +61,11 @@ public class Activity extends Application {
         btn1.setTranslateY(100);
 
         GridPane.setHalignment(btn1,HPos.CENTER);
-        GridPane.setHalignment(title, HPos.CENTER);
-        GridPane.setHalignment(url,HPos.CENTER);
 
         btn1.setText("DOWNLOAD");
-        url.setText("Insert Your url or path");
+        url.setPromptText("Insert Your url or path");
         title.setText("Url to a file or path to a file with urls");
-        nameAndExpansion.setText("name and expansion");
+        nameAndExpansion.setPromptText("name and expansion");
 
         btn1.setOnAction(event -> {
             FileChooser fileChooser = new FileChooser();

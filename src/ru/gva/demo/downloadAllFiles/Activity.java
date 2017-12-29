@@ -72,7 +72,7 @@ public class Activity extends Application {
             fileChooser.setTitle("Select directory for save");
             fileChooser.setInitialFileName(String.valueOf(nameAndExpansion.getCharacters()));
 
-            new UrlInFiles(fileChooser.showSaveDialog(new Stage()).getPath(),String.valueOf(url.getCharacters())).start();
+            new UrlorPathInFileWithUrl(fileChooser.showSaveDialog(new Stage()).getPath(),String.valueOf(url.getCharacters())).start();
 
         });
 

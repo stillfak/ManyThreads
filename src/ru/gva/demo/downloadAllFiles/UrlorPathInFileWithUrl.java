@@ -16,12 +16,12 @@ import java.util.regex.Pattern;
  * @author Gavrikov V. 15it18.
  */
 
-public class UrlInFiles extends Thread {
+public class UrlorPathInFileWithUrl extends Thread {
     private List<String> urls;
     private String pathInOS;
     private String urlOrPath;
 
-    UrlInFiles(String pathInOS, String urlOrPath) {
+    UrlorPathInFileWithUrl(String pathInOS, String urlOrPath) {
         this.urlOrPath = urlOrPath;
         this.pathInOS = pathInOS;
         this.urls = new ArrayList<>();
